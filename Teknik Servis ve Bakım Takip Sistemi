@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.PriorityQueue;
 import java.util.Stack;
 
-// --- 4. ÜYENİN MODÜLÜ: Yedek Parça Stok Takibi (BST Düğümü) ---
+// Yedek Parça Düğüm Yapısı (BST)
 class ParcaNode {
     String parcaKodu;
     int stokAdedi;
@@ -17,7 +17,7 @@ class ParcaNode {
     }
 }
 
-// --- İkili Arama Ağacı (BST) Yöneticisi ---
+// İkili Arama Ağacı (BST) - Stok Yönetimi
 class StokAgaci {
     ParcaNode kok;
 
@@ -40,47 +40,41 @@ class StokAgaci {
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("=== VY-023 TEKNİK SERVİS VE BAKIM TAKİP SİSTEMİ ===");
-        System.out.println();
+        System.out.println("=== VY-023 TEKNİK SERVİS VE BAKIM TAKİP SİSTEMİ ==_\n");
 
-        // --- 2. ÜYE (Abdurrahman Kaplan): Müşteri & Cihaz Arama (HashMap) ---
-        System.out.println("[Modül 2] Müşteri ve Cihaz Yönetimi Test Ediliyor...");
+        // 1. Müşteri ve Cihaz Yönetimi (HashMap)
         HashMap<String, String> musteriMap = new HashMap<>();
-        musteriMap.put("5551234567", "Ahsen Türkoğlu (Cihaz: Laptop)");
-        musteriMap.put("5559876543", "Kemal Kaplan (Cihaz: Telefon)");
+        musteriMap.put("5551234567", "Ahsen Türkoğlu - Laptop");
+        musteriMap.put("5559876543", "Kemal Kaplan - Telefon");
         
-        String arananTelefon = "5551234567";
-        System.out.println("Aranan Telefon (" + arananTelefon + "): " + musteriMap.get(arananTelefon));
+        System.out.println("[HashMap] Müşteri Arama Testi:");
+        System.out.println("Bulunan: " + musteriMap.get("5551234567"));
         System.out.println();
 
-        // --- 3. ÜYE (Ahmet Utku Eraslan): Servis Kabul & Sıra (PriorityQueue) ---
-        System.out.println("[Modül 3] Servis İş Emri ve Sıra Test Ediliyor...");
+        // 2. Servis Kabul ve Sıra (PriorityQueue)
         PriorityQueue<String> servisSira = new PriorityQueue<>();
         servisSira.add("2 - Normal Bakım: Fan Temizliği");
-        servisSira.add("1 - Acil Onarım: Ekran Değişimi"); // Alfabetik/Öncelik mantığı
+        servisSira.add("1 - Acil Onarım: Ekran Değişimi");
         
-        System.out.println("İşleme Alınan Sıradaki Cihaz: " + servisSira.poll());
+        System.out.println("[PriorityQueue] Sıradaki Servis Testi:");
+        System.out.println("İşleme Alınan: " + servisSira.poll());
         System.out.println();
 
-        // --- 4. ÜYE (Kemal Kaplan): Yedek Parça Stok Takibi (BST) ---
-        System.out.println("[Modül 4] Yedek Parça Stok Ağacı Test Ediliyor...");
+        // 3. Yedek Parça Stok Takibi (BST)
         StokAgaci stokAgaci = new StokAgaci();
         stokAgaci.ekle("P100", 15);
         stokAgaci.ekle("P050", 8);
         stokAgaci.ekle("P200", 25);
-        System.out.println("Stok ağacına parçalar (P100, P050, P200) başarıyla eklendi.");
+        
+        System.out.println("[BST] Yedek Parça Stok Ağacı oluşturuldu ve parçalar eklendi.");
         System.out.println();
 
-        // --- Ek Modül: İşlem Geçmişi (Stack - Geri Al Özelliği) ---
-        System.out.println("[Ek Modül] İşlem Geçmişi (Stack) Test Ediliyor...");
+        // 4. İşlem Geçmişi (Stack)
         Stack<String> islemGecmisi = new Stack<>();
         islemGecmisi.push("Müşteri Kaydı Eklendi");
         islemGecmisi.push("Cihaz Servise Alındı");
         
-        System.out.println("Son Yapılan İşlem (Geri Alınacak): " + islemGecmisi.pop());
-        System.out.println("İşlem geçmişi testi tamamlandı.");
-        
-        System.out.println();
-        System.out.println("Sistem başarıyla çalıştırıldı!");
+        System.out.println("[Stack] İşlem Geçmişi Testi:");
+        System.out.println("Geri Alınacak Son İşlem: " + islemGecmisi.pop());
     }
 }
